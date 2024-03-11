@@ -10,7 +10,6 @@ public class Input_Move : MonoBehaviour
     private bool isMove;
     private Vector3 destination;
 
-    [SerializeField] TextMeshProUGUI test_TMP;
     Animator animator;
     Rigidbody rigid;
 
@@ -28,7 +27,6 @@ public class Input_Move : MonoBehaviour
         else
             Click();
 
-        test_TMP.text = destination.ToString();
         Move();
     }
     #region 터치 관련
