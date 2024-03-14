@@ -1,4 +1,3 @@
-```ruby
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -24,4 +23,3 @@ public class Anime : MonoBehaviour
         return anim.GetCurrentAnimatorClipInfo(0).Length;
     }
 }
-```
