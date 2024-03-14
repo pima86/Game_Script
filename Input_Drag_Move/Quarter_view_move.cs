@@ -1,4 +1,3 @@
-```ruby
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -79,6 +78,3 @@ public class Input_Move : MonoBehaviour
     }
     #endregion
 }
-
-
-```
