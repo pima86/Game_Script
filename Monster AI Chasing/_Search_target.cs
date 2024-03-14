@@ -1,4 +1,3 @@
-```ruby
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -43,5 +42,3 @@ public class Search_target : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, radius);
     }
 }
-
-```
