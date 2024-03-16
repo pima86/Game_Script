@@ -22,4 +22,5 @@ public class Anime : MonoBehaviour
 
         return anim.GetCurrentAnimatorClipInfo(0).Length;
     }
+    
 }
