@@ -6,26 +6,37 @@ using UnityEngine.TextCore.Text;
 
 public class Fallow_target : MonoBehaviour
 {
+    /*
+     * 입력받은 Transform으로 Nav를 통해 이동합니다.
+     */
+
     Rigidbody rigid;
-    Transform target_trans;
     NavMeshAgent nav;
+    Anime anime;
+
+    Transform target_trans;
     bool move;
+
 
     private void Start()
     {
         rigid = GetComponent<Rigidbody>();
         nav = GetComponent<NavMeshAgent>();
+        anime = GetComponent<Anime>();
     }
 
     public void Move(Transform transform, bool bo)
     {
         target_trans = transform;
         move = bo;
+
+        anime.SetBool("isMove", bo);
     }
 
     private void Update()
     {
-        Fallow_Target();
+        if(nav.enabled)
+            Fallow_Target();
     }
 
     private void FixedUpdate()
