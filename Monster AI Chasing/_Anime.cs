@@ -11,10 +11,12 @@ public class Anime : MonoBehaviour
         anim = GetComponent<Animator>();
     }
 
-    public void Start_Anim(string name, bool bo)
+    public void SetBool(string name, bool bo)
     {
         anim.SetBool(name, bo);
     }
+
+    public bool GetBool(string name) { return anim.GetBool(name); }
 
     public float Play_Anim(string name)
     {
@@ -22,5 +24,4 @@ public class Anime : MonoBehaviour
 
         return anim.GetCurrentAnimatorClipInfo(0).Length;
     }
-    
 }
