@@ -5,6 +5,7 @@ using UnityEngine;
 public class Mob_Spawn : MonoBehaviour
 {
     public GameObject rangeObject;
+    public float spawnTime;
     BoxCollider rangeCollider;
 
     private void Awake()
@@ -36,12 +37,19 @@ public class Mob_Spawn : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(spawnTime);
 
             // 생성 위치 부분에 위에서 만든 함수 Return_RandomPosition() 함수 대입
             GameObject instantCapsul = Mob_Pool.Inst.Pool.Get();
+
             instantCapsul.transform.position = Return_RandomPosition();
-                //Instantiate(Mob_Pool.Inst.Pool.Get(), Return_RandomPosition(), Quaternion.identity);
+
+            yield return new WaitForSeconds(0.1f);
+
+            instantCapsul.tag = "Mob";
+            instantCapsul.layer = 7;
+
+            //Instantiate(Mob_Pool.Inst.Pool.Get(), Return_RandomPosition(), Quaternion.identity);
         }
     }
 }
