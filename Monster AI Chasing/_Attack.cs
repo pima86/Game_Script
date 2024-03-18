@@ -4,73 +4,55 @@ using UnityEngine;
 
 public class Attack : MonoBehaviour
 {
-    Search_target enemy;
-    Fallow_target fallow_target;
+    /*
+     * 사거리 안에 들어온 적을 향해 공격 애니메이션을 출력하거나
+     * 없다면 Idle 애니메이션을 출력합니다.
+     */
 
-    //공격 사거리
-    BoxCollider range;
+    Obj_Control control;
+    Search_target enemy;
+    Anime anime;
 
     public string target_tag;
 
-    //몬스터입니까?!
-    public bool ismob;
-    Anime anime;
-
-    private void Awake()
+    private void Start()
     {
-        enemy = GetComponent<Search_target>();
-        fallow_target = GetComponent<Fallow_target>();
-
-        if(TryGetComponent<Anime>(out Anime a)) anime = a;
+        control = GetComponentInParent<Obj_Control>();
+        enemy = control.enemy;
+        anime = control.anime;
     }
 
-    private void Update()
+    private void OnTriggerStay(Collider other)
     {
-        Move();
-    }
+        if (anime.GetBool("isAttack"))
+            return;
 
-    bool attack;
-    private void OnTriggerEnter(Collider other)
-    {
         if (other.tag == target_tag)
-        {
-            fallow_target.Move(enemy.short_enemy.transform, false);
-
-            attack = true;
             StartCoroutine(Att());
-        }
     }
 
     private void OnTriggerExit(Collider other)
     {
+        if (control.tag == "Die" || anime.GetBool("isAttack"))
+            return;
+
         if (other.tag == target_tag)
         {
             anime.Play_Anim("Idle");
-
-            attack = false;
             StopAllCoroutines();
         }
     }
 
     IEnumerator Att()
     {
-        while (attack)
-        {
-            yield return new WaitForSeconds(anime.Play_Anim("Default_Attack"));
-        }
-    }
+        float time = anime.Play_Anim("Default_Attack");
 
-    private void Move()
-    {
-        if (enemy.short_enemy != null)
-        {
-            fallow_target.Move(enemy.short_enemy.transform, true);
+        anime.SetBool("isAttack", true);
+        yield return new WaitForSeconds(time / 2f);
 
-            if (ismob)
-            {
-                anime.Start_Anim("isMove", true);
-            }
+        enemy.short_enemy.GetComponent<Obj_Control>().HP -= control.power;
 
-        }
+        yield return new WaitForSeconds(time / 2f);
+        anime.SetBool("isAttack", false);
     }
 }
