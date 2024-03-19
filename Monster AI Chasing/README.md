@@ -9,6 +9,10 @@
 |몬스터|Attack|Anime|Fallow_target|Serach_target|Obj_Control|
 
 <br/>
+
+#### ▶ 활용한 프로젝트
+[<img src="https://img.shields.io/badge/Youtube-ED1C40?style=flat-square&logo=Youtube&logoColor=white"/>](https://www.youtube.com/shorts/uc3fuFpJtes)
+
 <br/>
 
 ##### ▶ Look_range
