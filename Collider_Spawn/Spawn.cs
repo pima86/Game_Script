@@ -1,12 +1,17 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class Mob_Spawn : MonoBehaviour
 {
     public GameObject rangeObject;
     public float spawnTime;
     BoxCollider rangeCollider;
+
+    public float not_mobzone_x;
+    public float not_mobzone_z;
 
     private void Awake()
     {
@@ -20,11 +25,22 @@ public class Mob_Spawn : MonoBehaviour
         float range_X = rangeCollider.bounds.size.x;
         float range_Z = rangeCollider.bounds.size.z;
 
-        range_X = Random.Range((range_X / 2) * -1, range_X / 2);
-        range_Z = Random.Range((range_Z / 2) * -1, range_Z / 2);
-        Vector3 RandomPostion = new Vector3(range_X, 0f, range_Z);
+        Vector3 main_pos = GameManager.Inst.character[0].transform.position;
 
-        Vector3 respawnPosition = originPosition + RandomPostion;
+        float x = 0;
+        if(Random.Range(0, 2) == 0 && main_pos.x - not_mobzone_x >= -50F)
+            x = Random.Range(-50f, main_pos.x - not_mobzone_x);
+        else if(main_pos.x + not_mobzone_x <= 50F)
+            x= Random.Range(main_pos.x + not_mobzone_x, 50f);
+
+        float z = 0;
+        if (Random.Range(0, 2) == 0 && main_pos.z - not_mobzone_z >= -50F)
+            z = Random.Range(-50f, main_pos.z - not_mobzone_z);
+        else if (main_pos.z + not_mobzone_z <= 50F)
+            z = Random.Range(main_pos.z + not_mobzone_z, 50f);
+
+
+        Vector3 respawnPosition = originPosition + new Vector3(x, 0, z);
         return respawnPosition;
     }
 
@@ -48,8 +64,6 @@ public class Mob_Spawn : MonoBehaviour
 
             instantCapsul.tag = "Mob";
             instantCapsul.layer = 7;
-
-            //Instantiate(Mob_Pool.Inst.Pool.Get(), Return_RandomPosition(), Quaternion.identity);
         }
     }
 }
