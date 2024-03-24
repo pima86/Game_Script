@@ -20,9 +20,8 @@
 
 <br/>
 
-##### ▶ Background_Size_Control
+##### ▶ Background_Size_Control(https://github.com/pima86/Game_Asset/tree/main/Background_Size_Control)
 ###### 디스플레이 화면 사이즈에 맞춰 뒷배경의 사이즈를 조정
-[<img src="https://img.shields.io/badge/C-03C75A?style=for-the-badge&logo=C&logoColor=white"/>](https://github.com/pima86/Game_Asset/tree/main/Background_Size_Control)
 
 ##### ▶ Collider_Spawn
 ###### BoxCollider을 통해 랜덤좌표에 프리팹 객체를 소환
