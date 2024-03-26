@@ -12,7 +12,8 @@ public class OnEnable_Typing : MonoBehaviour
 
     //타이핑할 TMP 개체
     TextMeshProUGUI textMeshProUGUI;
-
+    //이후 터치로 다음 이벤트를 실행시킬 터치 캔버스
+    [SerializeField] GameObject canvas_Touch_to_Contiue;
 
  // #1 실행단계
     private void OnEnable()
@@ -46,6 +47,9 @@ public class OnEnable_Typing : MonoBehaviour
             yield return new WaitForSeconds(delay);
         }
 
+        //터치 캔버스 활성화
+        canvas_Touch_to_Contiue.SetActive(true);
+        //...을 생성해줄 코루틴 실행
         StartCoroutine(Stay_Event());
     }
 
