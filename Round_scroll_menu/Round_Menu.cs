@@ -39,7 +39,7 @@ public class Room_Menu : MonoBehaviour
     {
         Vector3 offset = Input.mousePosition - mousePos;
 
-        rotation.z = -(offset.x + offset.y) * Time.deltaTime * rotate_speed;
+        rotation.z = -(offset.y) * Time.deltaTime * rotate_speed;
         transform.Rotate(rotation);
 
         if (rotation.z > 0) updown = true;
