@@ -84,15 +84,19 @@ public class Room_Menu : MonoBehaviour
              * 그에 맞는 순서대로 이미지들의 하이라이키를 재조정해줍니다.
              */
             if (updown)
-            { //내릴때
+            {
+                Debug.Log("들어옴");
+                //내릴때
                 addrass++;
 
-                for (int i = addrass; i - addrass <= obj.Length; i++)
+                for (int i = addrass; -(i) + addrass < obj.Length; i--)
                 {
                     int n = 0;
-                    if (i >= obj.Length)
-                        n = i - obj.Length;
+                    if (i < 0)
+                        n = obj.Length + i;
                     else n = i;
+
+                    //Debug.Log("i가 " + i + "일 때 n의 값은 " + n + "입니다.");
 
                     if (n != addrass) obj[n].transform.SetAsFirstSibling();
                 }
