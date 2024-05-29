@@ -24,7 +24,7 @@ public class Pool_Manager : MonoBehaviour
         // 미리 오브젝트 생성 해놓기
         for (int i = 0; i < defaultCapacity; i++)
         {
-            Pool_Obj obj = CreatePooledItem().GetComponent<Pool_Obj>();
+            Pool_Control obj = CreatePooledItem().GetComponent<Pool_Control>();
             obj.Pool.Release(obj.gameObject);
         }
     }
@@ -33,7 +33,7 @@ public class Pool_Manager : MonoBehaviour
     private GameObject CreatePooledItem()
     {
         GameObject poolGo = Instantiate(prefab, transform);
-        poolGo.GetComponent<Pool_Obj>().Pool = this.Pool;
+        poolGo.GetComponent<Pool_Control>().Pool = this.Pool;
         return poolGo;
     }
 
