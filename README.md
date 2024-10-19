@@ -33,5 +33,5 @@
 ##### 010 ▶ [Round_scroll_menu](https://github.com/pima86/Game_Asset/tree/main/Round_scroll_menu) // 드래그를 통해 메뉴를 둥글게 회전시키는 스크립트
 ##### 011 ▶ [Read_Spread_Sheet](https://github.com/pima86/Game_Asset/blob/main/SpreadSheet/ReadSpreadSheet.cs) // 스프레드 시트에서 데이터를 가져오는 스크립트
 ##### 012 ▶ [Typing Effect](https://github.com/pima86/Game_Asset/blob/main/Typing%20Effect/OnEnable_Typing.cs) //  한 글자씩 추가하여 타이핑하는 효과
-
+##### 013 ▶ [Camera](https://github.com/pima86/Game_Script/blob/main/013%20Camera_Touch/TouchCam.cs) // 테스트 중인 기기에 적절한 함수를 호출하여 카메라의 이동, 줌인과 줌아웃을 조작합니다.
 
